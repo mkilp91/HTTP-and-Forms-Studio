@@ -4,16 +4,55 @@
 	<meta charset="utf-8">
 	<script>
 		// TODO: create a handler
-    window.addEventListener("load", function(){
-        // TODO: register the handler
-    });
+		function setSeachEngine () {
+			window.alert("the function ran!");
+			let radioInput = document.querySelector('input[name=engine]:checked');
+			let actions = {
+				google: "https://www.google.com/search",
+				duckDuckGo: "https://duckduckgo.com/",
+				bing: "https://www.bing.com/search",
+				ask: "https://www.ask.com/web",
+			}
+			const form = document.getElementById('searchForm');
+			let actionURL = actions[radioInput.value];
+			form.action = actionURL;
+
+		// 	if (radioInput.value === "google") {
+		// 		actionURL = "https://www.google.com/search";
+		// 	} else if (radioInput.value === "duckDuckGo") {
+		// 		actionURL = "https://duckduckgo.com/";
+		// 	} else if (radioInput.value === "bing") {
+		// 		actionURL = "https://www.bing.com/search";
+		// 	} else if (radioInput.value === "ask") {
+		// 		actionURL = "https://www.ask.com/web";
+		// 	}
+		// console.log(actionURL);	
+		}
+		window.addEventListener("load", function(){
+			console.log('The page is now loaded!')
+			const form = document.getElementById('searchForm');
+
+			
+			// TODO: register the handler
+
+			form.addEventListener('submit', setSeachEngine);	
+    	});
 	</script>
 </head>
 
 <body>
 
-	<form id="searchForm">
-    <!-- TODO: add form elements -->
+	<form id="searchForm" target="_blank">
+		<!-- target="_blank" -->
+    	<input type="text" name="q"/>
+		<label>Google </label><input type="radio" name="engine" value="google"/>
+		<label>DuckDuckGo </label><input type="radio" name="engine" value="duckDuckGo"/>
+		<label>Bing </label><input type="radio" name="engine" value="bing"/>
+		<label>ask </label><input type="radio" name="engine" value="ask"/>
+		<input type="submit" value="Go!"/>
+
+		<!-- <label>Username <input type="text" name="username"/></label>
+         <label>Team Name <input type="text" name="team"/></label> -->
 	</form>
 
 </body>
